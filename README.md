@@ -1,4 +1,4 @@
-# *** Описание/Пошаговая инструкция выполнения домашнего задания: ***
+#  Описание/Пошаговая инструкция выполнения домашнего задания:
 
     Определить алгоритм с наилучшим сжатием.
     Зачем: отрабатываем навыки работы с созданием томов и установкой параметров. Находим наилучшее сжатие.
@@ -49,7 +49,7 @@
 $ cat /etc/redhat-release 
 CentOS Linux release 7.8.2003 (Core)
 
-### *** 1  создать 4 файловых системы на каждой применить свой алгоритм сжатия; ***
+## 1  создать 4 файловых системы на каждой применить свой алгоритм сжатия; 
 ```
 [root@server ~]# zfs get compression  | grep -v default
 NAME                   PROPERTY     VALUE           SOURCE
@@ -59,14 +59,14 @@ storage/lzjb_compress  compression  lzjb            local
 storage/zle_compress   compression  zle             local
 ```
 
-#### ***  Скачиваем файл и расклыдываем по директориям: ***
+#### Скачиваем файл и расклыдываем по директориям: 
 
 ```
 [root@server ~]# wget -c http://www.gutenberg.org/ebooks/2600.txt.utf-8
 [root@server ~]# for i in /storage/*compress; do cp 2600.txt.utf-8 $i; done
 ```
 
-Получаем лучшее ratio (ответ gzip в данном примере показал лучшее сжатие):
+#### Получаем лучшее ratio (ответ gzip в данном примере показал лучшее сжатие):
 ```
 [root@server ~]# for i in storage/lz4_compress storage/lzjb_compress storage/zle_compress storage/gzip_compress; do zfs get compression,compressratio $i; done
 NAME                  PROPERTY       VALUE           SOURCE
@@ -83,9 +83,9 @@ storage/gzip_compress  compression    gzip            local
 storage/gzip_compress  compressratio  2.67x           -
 ```
 
-## *** 2  Определить настройки pool’a. ***
+##  2  Определить настройки pool’a. 
 
-Скачиваем и распаковываем архив
+#### Скачиваем и распаковываем архив
 ```
 [root@server ~]# tar zxf zfs_task1.tar.gz
 [root@server zpoolexport]# ls -l
@@ -94,7 +94,7 @@ storage/gzip_compress  compressratio  2.67x           -
 -rw-r--r--. 1 root root 524288000 май 15  2020 fileb
 ```
 
-Проверяем содержимое и восстанавливаем:
+#### Проверяем содержимое и восстанавливаем:
 ```
 [root@server zpoolexport]# zpool import -d $PWD/ 
    pool: otus
@@ -112,7 +112,7 @@ status: Some supported features are not enabled on the pool.
 
 [root@server zpoolexport]# zpool import -d $PWD/ otus
 ```
-### *** Определяем настройки пула
+##  Определяем настройки пула
 ```
 # zpool list
 NAME      SIZE  ALLOC   FREE  CKPOINT  EXPANDSZ   FRAG    CAP  DEDUP    HEALTH  ALTROOT
@@ -138,9 +138,9 @@ otus  compression  zle             local
 otus  checksum     sha256          local
 ```
 
-## *** 3 Найти сообщение от преподавателей. ***
+## 3 Найти сообщение от преподавателей. 
 
-Восстанавливаем snapshot
+#### Восстанавливаем snapshot
 ```
 # zfs receive otus/hometask2/file < otus_task2.file
 ```

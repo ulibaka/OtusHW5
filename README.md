@@ -66,7 +66,7 @@ status: Some supported features are not enabled on the pool.
 
 [root@server zpoolexport]# zpool import -d $PWD/ otus
 ```
-##  Определяем настройки пула
+###  Определяем настройки пула
 ```
 # zpool list
 NAME      SIZE  ALLOC   FREE  CKPOINT  EXPANDSZ   FRAG    CAP  DEDUP    HEALTH  ALTROOT

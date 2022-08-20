@@ -66,7 +66,7 @@ storage/zle_compress   compression  zle             local
 [root@server ~]# for i in /storage/*compress; do cp 2600.txt.utf-8 $i; done
 ```
 
-#### Получаем лучшее ratio (ответ gzip в данном примере показал лучшее сжатие):
+#### Получаем лучшее ratio (ответ - gzip в данном примере показал лучшее сжатие):
 ```
 [root@server ~]# for i in storage/lz4_compress storage/lzjb_compress storage/zle_compress storage/gzip_compress; do zfs get compression,compressratio $i; done
 NAME                  PROPERTY       VALUE           SOURCE

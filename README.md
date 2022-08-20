@@ -3,7 +3,7 @@
 $ cat /etc/redhat-release 
 CentOS Linux release 7.8.2003 (Core)
 
-## 1  создать 4 файловых системы на каждой применить свой алгоритм сжатия; 
+## 1.  создать 4 файловых системы на каждой применить свой алгоритм сжатия; 
 ```
 [root@server ~]# zfs get compression  | grep -v default
 NAME                   PROPERTY     VALUE           SOURCE
@@ -37,7 +37,7 @@ storage/gzip_compress  compression    gzip            local
 storage/gzip_compress  compressratio  2.67x           -
 ```
 
-##  2  Определить настройки pool’a. 
+##  2.  Определить настройки pool’a. 
 
 #### Скачиваем и распаковываем архив
 ```
@@ -92,7 +92,7 @@ otus  compression  zle             local
 otus  checksum     sha256          local
 ```
 
-## 3 Найти сообщение от преподавателей. 
+## 3. Найти сообщение от преподавателей. 
 
 #### Восстанавливаем snapshot
 ```
